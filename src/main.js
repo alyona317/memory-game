@@ -1,60 +1,68 @@
-import './style.css'
-import heroImg from './assets/hero.png'
-import javascriptLogo from './assets/javascript.svg'
-import viteLogo from './assets/vite.svg'
-import { setupCounter } from './counter.js'
+import './style.css';
+import cards from './data/cards.json';
+const PREVIEW = true;
+ 
 
-document.querySelector('#app').innerHTML = `
-<section id="center">
-  <div class="hero">
-    <img src="${heroImg}" class="base" width="170" height="179">
-    <img src="${javascriptLogo}" class="framework" alt="JavaScript logo"/>
-    <img src="${viteLogo}" class="vite" alt="Vite logo" />
-  </div>
-  <div>
-    <h1>Get started</h1>
-    <p>Edit <code>src/main.js</code> and save to test <code>HMR</code></p>
-  </div>
-  <button id="counter" type="button" class="counter"></button>
-</section>
+function createElement(tag, className, text) {
+  const el = document.createElement(tag);
+  if (className) el.className = className;
+  if (text) el.textContent = text;
+  return el;
+}
+ 
 
-<div class="ticks"></div>
+function createHeader() {
+  const header = createElement('header', 'header');
+ 
+  const logo = createElement('div', 'logo');
+  logo.append(
+    createElement('span', 'logo__title', 'Memory Game'),
+    createElement('span', 'logo__subtitle', 'Paper Company · Regional Branch')
+  );
+ 
+  const nav = createElement('nav', 'header__nav');
+  const newGameBtn = createElement('button', 'btn btn--primary', 'Новая игра');
+  newGameBtn.type = 'button';
+  const leadersBtn = createElement('button', 'btn btn--secondary', 'Таблица лидеров');
+  leadersBtn.type = 'button';
+  nav.append(newGameBtn, leadersBtn);
+ 
+  header.append(logo, nav);
+  return header;
+}
+ 
 
-<section id="next-steps">
-  <div id="docs">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#documentation-icon"></use></svg>
-    <h2>Documentation</h2>
-    <p>Your questions, answered</p>
-    <ul>
-      <li>
-        <a href="https://vite.dev/" target="_blank">
-          <img class="logo" src="${viteLogo}" alt="" />
-          Explore Vite
-        </a>
-      </li>
-      <li>
-        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-          <img class="button-icon" src="${javascriptLogo}" alt="">
-          Learn more
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div id="social">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#social-icon"></use></svg>
-    <h2>Connect with us</h2>
-    <p>Join the Vite community</p>
-    <ul>
-      <li><a href="https://github.com/vitejs/vite" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#github-icon"></use></svg>GitHub</a></li>
-      <li><a href="https://chat.vite.dev/" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#discord-icon"></use></svg>Discord</a></li>
-      <li><a href="https://x.com/vite_js" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#x-icon"></use></svg>X.com</a></li>
-      <li><a href="https://bsky.app/profile/vite.dev" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#bluesky-icon"></use></svg>Bluesky</a></li>
-    </ul>
-  </div>
-</section>
+function createCard(card) {
+  const cardEl = createElement('div', 'card');
+  cardEl.dataset.id = card.id;
+  if (PREVIEW) cardEl.classList.add('is-open');
+ 
+  const back = createElement('div', 'card__back');
+ 
+  const front = createElement('div', 'card__front');
+  const img = createElement('img', 'card__image');
+  img.src = card.image; 
+  front.append(img);
+ 
+  cardEl.append(back, front);
+  return cardEl;
+}
+ 
 
-<div class="ticks"></div>
-<section id="spacer"></section>
-`
+function createBoard(cardsList) {
+  const board = createElement('section', 'board');
+  cardsList.forEach(card => board.append(createCard(card)));
+  return board;
+}
+ 
 
-setupCounter(document.querySelector('#counter'))
+function init() {
+  const app = document.getElementById('app');
+  const main = createElement('main', 'main');
+  const pairs = [...cards, ...cards];
+  main.append(createBoard(pairs));
+  app.append(createHeader(), main);
+}
+ 
+init();
+ 
