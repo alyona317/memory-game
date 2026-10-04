@@ -1,4 +1,5 @@
 import './style.css';
+import { shuffleCards } from './shuffle.js';
 import cards from './data/cards.json';
 const PREVIEW = true;
  
@@ -60,7 +61,7 @@ function init() {
   const app = document.getElementById('app');
   const main = createElement('main', 'main');
   const pairs = [...cards, ...cards];
-  main.append(createBoard(pairs));
+  main.append(createBoard(shuffleCards(pairs)));
   app.append(createHeader(), main);
 }
  
