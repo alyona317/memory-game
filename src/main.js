@@ -1,17 +1,10 @@
 import './style.css';
 import { shuffleCards } from './shuffle.js';
 import cards from './data/cards.json';
+import { createElement, createBoard } from './board.js';
 import { openClickedCard } from './checkingCardId.js';
-
-
-function createElement(tag, className, text) {
-  const el = document.createElement(tag);
-  if (className) el.className = className;
-  if (text) el.textContent = text;
-  return el;
-}
+import { newGame } from './newGame.js';
  
-
 function createHeader() {
   const header = createElement('header', 'header');
  
@@ -24,6 +17,8 @@ function createHeader() {
   const nav = createElement('nav', 'header__nav');
   const newGameBtn = createElement('button', 'btn btn--primary', 'Новая игра');
   newGameBtn.type = 'button';
+  newGameBtn.addEventListener('click', () => newGame(cards));
+ 
   const leadersBtn = createElement('button', 'btn btn--secondary', 'Таблица лидеров');
   leadersBtn.type = 'button';
   nav.append(newGameBtn, leadersBtn);
@@ -32,36 +27,10 @@ function createHeader() {
   return header;
 }
  
-
-function createCard(card) {
-  const cardEl = createElement('div', 'card');
-  cardEl.dataset.id = card.id;
- 
- 
-  const back = createElement('div', 'card__back');
- 
-  const front = createElement('div', 'card__front');
-  const img = createElement('img', 'card__image');
-  img.src = card.image; 
-  front.append(img);
- 
-  cardEl.append(back, front);
-  return cardEl;
-}
- 
-
-function createBoard(cardsList) {
-  const board = createElement('section', 'board');
-  cardsList.forEach(card => board.append(createCard(card)));
-  return board;
-}
- 
-
 function init() {
   const app = document.getElementById('app');
   const main = createElement('main', 'main');
-  const pairs = [...cards, ...cards];
-  main.append(createBoard(shuffleCards(pairs)));
+  main.append(createBoard(shuffleCards([...cards, ...cards])));
   app.append(createHeader(), main);
 }
  
