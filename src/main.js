@@ -1,8 +1,8 @@
 import './style.css';
 import { shuffleCards } from './shuffle.js';
 import cards from './data/cards.json';
-const PREVIEW = true;
- 
+import { openClickedCard } from './checkingCardId.js';
+
 
 function createElement(tag, className, text) {
   const el = document.createElement(tag);
@@ -36,7 +36,7 @@ function createHeader() {
 function createCard(card) {
   const cardEl = createElement('div', 'card');
   cardEl.dataset.id = card.id;
-  if (PREVIEW) cardEl.classList.add('is-open');
+ 
  
   const back = createElement('div', 'card__back');
  
@@ -66,4 +66,4 @@ function init() {
 }
  
 init();
- 
+openClickedCard();
