@@ -1,4 +1,5 @@
 import cards from './data/cards.json';
+import { saveResult } from './leaderBoard.js';
  
 const TOTAL_PAIRS = cards.length;
  
@@ -60,6 +61,7 @@ export const openClickedCard = function () {
  
       if (matchedPairs === TOTAL_PAIRS) {
         const finalMoves = moves;
+        saveResult(finalMoves);
         winTimer = setTimeout(() => {
           winTimer = null;
           document.dispatchEvent(new CustomEvent('game:win', { detail: { moves: finalMoves } }));

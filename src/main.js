@@ -5,6 +5,7 @@ import { createElement, createBoard } from './board.js';
 import { openClickedCard } from './checkingCardId.js';
 import { newGame } from './newGame.js';
 import { showWinModal } from './winModal.js';
+import { showLeaderboardModal } from './leaderboardModal.js';
  
 function createHeader() {
   const header = createElement('header', 'header');
@@ -35,6 +36,7 @@ function createHeader() {
  
   const leadersBtn = createElement('button', 'btn btn--secondary', 'Таблица лидеров');
   leadersBtn.type = 'button';
+  leadersBtn.addEventListener('click', showLeaderboardModal);
   nav.append(newGameBtn, leadersBtn);
  
   header.append(logo, counter, nav);

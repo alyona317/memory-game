@@ -180,8 +180,8 @@ body {
 .no-scroll { overflow: hidden; }
  
 .modal {
-  margin: auto;            /* по центру экрана */
-  padding: 0;              /* важно: клик вне .modal__content = клик по фону */
+  margin: auto; 
+  padding: 0;
   border: none;
   background: transparent;
   max-width: calc(100% - 32px);
@@ -233,3 +233,42 @@ body {
   .modal__content { padding: 24px 20px; }
   .win__title { font-size: 28px; }
 }
+ 
+/* ===== Leaderboard modal ===== */
+.leaders { min-width: min(360px, 80vw); text-align: center; }
+ 
+.leaders__title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 30px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--corporate-blue);
+}
+ 
+.leaders__empty { margin-top: 20px; font-size: 16px; color: #6b6f76; }
+ 
+.leaders__table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  font-size: 16px;
+}
+ 
+.leaders__table th {
+  padding: 8px 12px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--paper);
+  background: var(--corporate-blue);
+}
+ 
+.leaders__table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--paper-line);
+}
+ 
+.leaders__table tbody tr:nth-child(1) td { font-weight: 700; color: var(--stamp); }
+ 
+.leaders__actions { margin-top: 24px; }
