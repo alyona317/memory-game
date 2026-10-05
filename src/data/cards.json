@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "майкл и чай",
+    "image": "/images/michael_1.jpeg"
+  },
+  {
+    "id": 2,
+    "name": "майкл грустный",
+    "image": "/images/michael_2.jpeg"
+  },
+  {
+    "id": 3,
+    "name": "майкл и 2 пальца",
+    "image": "/images/michael_3.jpeg"
+  },
+  {
+    "id": 4,
+    "name": "нервный майкл",
+    "image": "/images/michael_4.jpeg"
+  },
+  {
+    "id": 5,
+    "name": "угрожающий майкл",
+    "image": "/images/michael_5.jpeg"
+  },
+  {
+    "id": 6,
+    "name": "майкл и бубис",
+    "image": "/images/michael_6.jpeg"
+  },
+  {
+    "id": 7,
+    "name": "бритни майкл",
+    "image": "/images/michael_7.jpeg"
+  },
+  {
+    "id": 8,
+    "name": "кевин",
+    "image": "/images/kevin.jpeg"
+  }
+]
+
+
