@@ -56,6 +56,35 @@ body {
  
 .header__nav { display: flex; gap: 12px; }
  
+/* ===== Counter ===== */
+.counter {
+  display: flex;
+  gap: 24px;
+  padding: 6px 18px;
+  border: 2px dashed var(--corporate-blue);
+  border-radius: 4px;
+}
+ 
+.counter__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+ 
+.counter__label {
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #6b6f76;
+}
+ 
+.counter__value {
+  font-family: 'Oswald', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--corporate-blue);
+}
+ 
 .btn {
   padding: 10px 20px;
   font-family: 'Oswald', sans-serif;
@@ -109,6 +138,7 @@ body {
   border-radius: 6px;
   box-shadow: var(--shadow);
   backface-visibility: hidden;
+  transition: transform 0.4s;
 }
  
 .card__back {
@@ -120,7 +150,7 @@ body {
 .card__front {
   overflow: hidden;
   transform: rotateY(180deg);
-
+ 
 }
  
 .card__image {
@@ -140,7 +170,11 @@ body {
   .logo__title { font-size: 24px; }
   .btn { padding: 8px 12px; font-size: 13px; }
   .board { gap: 10px; }
+  .counter { gap: 16px; padding: 4px 12px; }
+  .counter__value { font-size: 18px; }
 }
-
+ 
 .card.is-open .card__back { transform: rotateY(180deg); }
 .card.is-open .card__front { transform: rotateY(0); }
+
+

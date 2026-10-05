@@ -14,6 +14,19 @@ function createHeader() {
     createElement('span', 'logo__subtitle', 'Paper Company · Regional Branch')
   );
  
+  const counter = createElement('div', 'counter');
+  const movesItem = createElement('div', 'counter__item');
+  movesItem.append(
+    createElement('span', 'counter__label', 'Ходы'),
+    createElement('span', 'counter__value counter__moves', '0')
+  );
+  const pairsItem = createElement('div', 'counter__item');
+  pairsItem.append(
+    createElement('span', 'counter__label', 'Пары'),
+    createElement('span', 'counter__value counter__pairs', `0 из ${cards.length}`)
+  );
+  counter.append(movesItem, pairsItem);
+
   const nav = createElement('nav', 'header__nav');
   const newGameBtn = createElement('button', 'btn btn--primary', 'Новая игра');
   newGameBtn.type = 'button';
@@ -23,7 +36,7 @@ function createHeader() {
   leadersBtn.type = 'button';
   nav.append(newGameBtn, leadersBtn);
  
-  header.append(logo, nav);
+  header.append(logo, counter, nav);
   return header;
 }
  
