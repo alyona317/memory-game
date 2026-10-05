@@ -4,6 +4,7 @@ import cards from './data/cards.json';
 import { createElement, createBoard } from './board.js';
 import { openClickedCard } from './checkingCardId.js';
 import { newGame } from './newGame.js';
+import { showWinModal } from './winModal.js';
  
 function createHeader() {
   const header = createElement('header', 'header');
@@ -49,3 +50,7 @@ function init() {
  
 init();
 openClickedCard();
+
+document.addEventListener('game:win', (e) => {
+  showWinModal(e.detail.moves, () => newGame(cards));
+});

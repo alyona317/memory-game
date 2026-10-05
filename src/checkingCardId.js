@@ -6,6 +6,7 @@ const TOTAL_PAIRS = cards.length;
 let firstCard = null;    
 let lockBoard = false; 
 let closeTimer = null;
+let winTimer = null; 
 let moves = 0;         
 let matchedPairs = 0; 
  
@@ -21,6 +22,9 @@ const renderStats = function () {
 
 export const resetGameState = function () {
   clearTimeout(closeTimer); 
+  clearTimeout(winTimer);
+  closeTimer = null;
+  winTimer = null;
   firstCard = null;
   lockBoard = false;
   moves = 0;
@@ -53,6 +57,14 @@ export const openClickedCard = function () {
       matchedPairs++;
       firstCard = null;
       renderStats();
+ 
+      if (matchedPairs === TOTAL_PAIRS) {
+        const finalMoves = moves;
+        winTimer = setTimeout(() => {
+          winTimer = null;
+          document.dispatchEvent(new CustomEvent('game:win', { detail: { moves: finalMoves } }));
+        }, 500);
+      }
     } else {
       const prevCard = firstCard;
       firstCard = null;
@@ -66,6 +78,5 @@ export const openClickedCard = function () {
     }
   });
 };
- 
 
 

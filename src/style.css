@@ -176,5 +176,60 @@ body {
  
 .card.is-open .card__back { transform: rotateY(180deg); }
 .card.is-open .card__front { transform: rotateY(0); }
-
-
+/* ===== Modal ===== */
+.no-scroll { overflow: hidden; }
+ 
+.modal {
+  margin: auto;            /* по центру экрана */
+  padding: 0;              /* важно: клик вне .modal__content = клик по фону */
+  border: none;
+  background: transparent;
+  max-width: calc(100% - 32px);
+}
+ 
+.modal::backdrop {
+  background: rgba(20, 24, 28, 0.7);
+}
+ 
+.modal__content {
+  padding: 32px 40px;
+  background: var(--paper);
+  border-top: 6px solid var(--corporate-blue);
+  border-radius: 6px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  color: var(--ink);
+}
+ 
+/* ===== Win modal ===== */
+.win { text-align: center; }
+ 
+.win__title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 36px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--corporate-blue);
+}
+ 
+.win__text { margin-top: 12px; font-size: 16px; }
+ 
+.win__moves {
+  margin-top: 4px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--stamp);
+}
+ 
+.win__actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+ 
+@media (max-width: 520px) {
+  .modal__content { padding: 24px 20px; }
+  .win__title { font-size: 28px; }
+}
