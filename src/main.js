@@ -6,16 +6,16 @@ import { openClickedCard } from './checkingCardId.js';
 import { newGame } from './newGame.js';
 import { showWinModal } from './winModal.js';
 import { showLeaderboardModal } from './leaderboardModal.js';
- 
+
 function createHeader() {
   const header = createElement('header', 'header');
- 
+
   const logo = createElement('div', 'logo');
   logo.append(
     createElement('span', 'logo__title', 'Memory Game'),
     createElement('span', 'logo__subtitle', 'Paper Company · Regional Branch')
   );
- 
+
   const counter = createElement('div', 'counter');
   const movesItem = createElement('div', 'counter__item');
   movesItem.append(
@@ -33,23 +33,23 @@ function createHeader() {
   const newGameBtn = createElement('button', 'btn btn--primary', 'Новая игра');
   newGameBtn.type = 'button';
   newGameBtn.addEventListener('click', () => newGame(cards));
- 
+
   const leadersBtn = createElement('button', 'btn btn--secondary', 'Таблица лидеров');
   leadersBtn.type = 'button';
   leadersBtn.addEventListener('click', showLeaderboardModal);
   nav.append(newGameBtn, leadersBtn);
- 
+
   header.append(logo, counter, nav);
   return header;
 }
- 
+
 function init() {
   const app = document.getElementById('app');
   const main = createElement('main', 'main');
   main.append(createBoard(shuffleCards([...cards, ...cards])));
   app.append(createHeader(), main);
 }
- 
+
 init();
 openClickedCard();
 
