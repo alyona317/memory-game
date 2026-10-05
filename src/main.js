@@ -5,7 +5,7 @@ import { createElement, createBoard } from './board.js';
 import { openClickedCard } from './checkingCardId.js';
 import { newGame } from './newGame.js';
 import { showWinModal } from './winModal.js';
-import { showLeaderboardModal } from './leaderboardModal.js';
+import { showLeaderboardModal } from './LeaderBoardModal.js';
 
 function createHeader() {
   const header = createElement('header', 'header');
